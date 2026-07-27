@@ -1,0 +1,25 @@
+backend/
+├── controllers/                    # Business logic
+│   └── Experience.js
+│   └── OAQuestions.js
+│   └── auth.js
+│
+├── routes/                         # Route handlers
+│   └── interview.js
+│   └── oa.js
+│   └── auth.js
+│
+├── models/                         # Mongoose models
+│   └── Experience.js
+│
+├── middleware/
+│
+├── config/
+│   └── db.js
+│
+├── uploads/                        # For OA PDFs/photos
+│
+├── .env                            # MongoDB URI, JWT secret  
+├── index.js                       # Start server + DB connection
+├── package.json
+└── .gitignore

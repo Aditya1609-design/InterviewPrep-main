@@ -1,0 +1,37 @@
+frontend/
+├── public/
+│
+├── src/
+│   ├── assets/                      # Static files (images, logos, etc.)
+│   ├── components/                  # Reusable UI components
+│   │   └── ExperienceCard.jsx
+│   │   └── ExperienceForm.jsx
+│   │   └── FilterTabs.jsx
+│   │   └── Navbar.jsx
+│   │   └── HeroBanner.jsx
+│   │   └── Signup.jsx
+│   │   └── Login.jsx
+│   │
+│   ├── pages/                       # Route-level components
+│   │   └── Home.jsx
+│   │   └── Interview.jsx
+│   │   └── NotFound.jsx
+│   │   └── OAquestions.jsx
+│   │   └── AdminPanel.jsx
+│   │   └── SubmitExperience.jsx
+│   │
+│   ├── context/                       # Route-level components
+│   │   └── firebase.jsx
+|   |
+│   ├── constants/                       # Route-level components
+│   │   └── CompanyNames.jsx
+|   |
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css                    # Styling
+│
+├── tailwind.config.js
+├── postcss.config.js
+├── .env                             # API endpoints, Firebase keys
+├── package.json
+└── vite.config.js
