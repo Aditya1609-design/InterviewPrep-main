@@ -10,7 +10,7 @@ const HEADERS = {
   "X-Title": "InterviewPrepAI"
 };
 
-const askLLM = async function(prompt, model = "mistralai/mixtral-8x7b-instruct") {
+const askLLM = async function(prompt, model = "openrouter/free") {
   try {
     const res = await axios.post(
       ENDPOINT,

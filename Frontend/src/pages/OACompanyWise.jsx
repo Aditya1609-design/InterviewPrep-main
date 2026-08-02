@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
-import axios from "axios";
+import api from "../services/api";
 import { ChevronDown, ChevronRight, ArrowLeft } from "lucide-react";
 
 /**
@@ -31,10 +31,10 @@ export default function OACompanyWise() {
     setError(null);
     const url =
       difficultyFilter === "All"
-        ? `https://interviewprep-backend-5os4.onrender.com/oa/${encodeURIComponent(companyName)}`
-        : `https://interviewprep-backend-5os4.onrender.com/oa/${encodeURIComponent(companyName)}?difficulty=${difficultyFilter}`;
+        ? `oa/${encodeURIComponent(companyName)}`
+        : `oa/${encodeURIComponent(companyName)}?difficulty=${difficultyFilter}`;
     try {
-      const { data } = await axios.get(url);
+      const { data } = await api.get(url);
       setRaw(Array.isArray(data) ? data : []);
     } catch (err) {
       setError(err.message ?? "Something went wrong");
@@ -187,7 +187,7 @@ export default function OACompanyWise() {
 
                         {isOpen && (
                           <div className="px-6 pb-4 text-sm text-gray-700 whitespace-pre-wrap">
-                            {q.detail || 'No additional details'}
+                            {q.explanation || 'No additional details'}
                           </div>
                         )}
                       </li>

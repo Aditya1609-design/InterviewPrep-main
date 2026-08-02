@@ -17,7 +17,7 @@ const getCompanies = async (req, res) => {
 };
 
 /* GET  /oa/:company?difficulty=Hard
-   -> [{ year, role, question, detail, difficulty }, …] */
+   -> [{ year, role, question, explanation, difficulty }, …] */
 const getQuestionsByCompany = async (req, res) => {
   try {
     const company    = decodeURIComponent(req.params.company);
@@ -29,7 +29,7 @@ const getQuestionsByCompany = async (req, res) => {
     }
 
     const questions = await OAQuestion.find(match)
-      .select("year role question detail difficulty -_id")
+      .select("year role question explanation difficulty -_id")
       .sort({ year: -1 })
       .exec();
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import "../firebase"
 
 // 📦 API base from .env
 const API_BASE = import.meta.env.VITE_API_URL || "";

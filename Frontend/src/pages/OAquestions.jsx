@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Plus } from "lucide-react";
 import Modal from "../components/Modal";
 import OAQuestionForm from "../components/OAQuestionForm";
-import axios from "axios";
+import api from "../services/api";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -27,8 +27,8 @@ export default function OAquestions() {
 
   /* fetch list */
   useEffect(() => {
-    axios
-      .get("https://interviewprep-backend-5os4.onrender.com/oa/companies")
+    api
+      .get("oa/companies")
       .then((res) => setCompanyList(res.data))
       .catch((err) => setError(err.message ?? "Something went wrong"))
       .finally(() => setLoading(false));
@@ -61,8 +61,8 @@ export default function OAquestions() {
         isOpen={formOpen}
         onClose={() => {
           setFormOpen(false);
-          axios
-            .get("https://interviewprep-backend-5os4.onrender.com/oa/companies")
+          api
+            .get("oa/companies")
             .then((res) => setCompanyList(res.data))
             .catch(() => {});
         }}
@@ -70,8 +70,8 @@ export default function OAquestions() {
         <OAQuestionForm
           onClose={() => {
             setFormOpen(false);
-            axios
-              .get("https://interviewprep-backend-5os4.onrender.com/oa/companies")
+            api
+              .get("oa/companies")
               .then((res) => setCompanyList(res.data))
               .catch(() => {});
           }}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import HeroBanner from "../components/HeroBanner";
 import ExperienceCard from "../components/ExperienceCard";
 import SearchFilters from "../components/FilterTabs";
@@ -24,7 +24,7 @@ export default function Home() {
       params.append("limit", pageSize);
 
       try {
-        const res = await axios.get(`https://interviewprep-backend-5os4.onrender.com/interview?${params.toString()}`);
+        const res = await api.get(`interview?${params.toString()}`);
         setExperiences(res.data.data);
         setTotalPages(res.data.totalPages);
       } catch (err) {

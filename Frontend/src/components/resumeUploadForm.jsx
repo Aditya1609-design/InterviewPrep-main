@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import api from "../services/api";
 import {
   CircularProgressbar,
   buildStyles,
@@ -40,12 +41,8 @@ export default function ResumeUploadForm() {
     fd.append("resume", file);
 
     try {
-      const r = await fetch("https://interviewprep-backend-5os4.onrender.com/analyze-resume-pdf", {
-        method: "POST",
-        body: fd,
-      });
-      const j = await r.json();
-      setResult(j.analysis || []);
+      const res = await api.post("analyze-resume-pdf", fd);
+      setResult(res.data.analysis || []);
       toast.success("Analysis complete!");
     } catch {
       toast.error("Server error while analyzing.");

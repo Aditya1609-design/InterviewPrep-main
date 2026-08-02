@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 import { ChevronDown, ChevronUp, ArrowLeft } from "lucide-react";
 import {
   FaThumbsUp,
@@ -33,8 +33,8 @@ export default function ExperienceDetail() {
 
   /* ─── fetch experience ─────────────────── */
   useEffect(() => {
-    axios
-      .get(`https://interviewprep-backend-5os4.onrender.com/interview/${id}`)
+    api
+      .get(`interview/${id}`)
       .then((res) => {
         const exp = res.data;
         setExperience(exp);
@@ -51,12 +51,7 @@ export default function ExperienceDetail() {
       return;
     }
     try {
-      const token = await user.getIdToken();
-      const res = await axios.patch(
-        `https://interviewprep-backend-5os4.onrender.com/interview/${id}/upvote`,
-        {},
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      const res = await api.patch(`interview/${id}/upvote`, {});
       setUpvotes(res.data.upvotes);
       setIsUpvoted(res.data.upvoted);
       toast.success(

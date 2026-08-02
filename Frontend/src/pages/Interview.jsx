@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import HeroBanner from "../components/HeroBanner";
 import CompanyCard from "../components/CompanyCard";
 
@@ -20,7 +20,7 @@ export default function Interview() {
         limit,
       }).toString();
 
-      const res = await axios.get(`https://interviewprep-backend-5os4.onrender.com/interview?${params}`);
+      const res = await api.get(`interview?${params}`);
       const rows = Array.isArray(res.data) ? res.data : res.data.data;
 
       setExperiences(rows);

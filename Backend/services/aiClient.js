@@ -9,13 +9,14 @@ const BASE_HEADERS = {
   "X-Title": "InterviewPrepAI",
 };
 
-async function chatCompletion(messages, model = "mistralai/mixtral-8x7b-instruct") {
+async function chatCompletion(messages, model = "openrouter/free") {
   try {
     const res = await axios.post(
       ENDPOINT,
       { model, messages, stream: false },
       { headers: BASE_HEADERS, timeout: 30_000 }
     );
+    console.log("🔀 OpenRouter routed to model:", res.data.model);
     return res.data.choices[0].message.content.trim();
   } catch (err) {
     console.error("OpenRouter error →", err.response?.data || err.message);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -113,10 +113,7 @@ export default function ExperienceForm({ isAnonymous }) {
 
     try {
       setLoading(true);                           // 🆕 spinner start
-      const token = await auth.currentUser?.getIdToken();
-      await axios.post("https://interviewprep-backend-5os4.onrender.com/interview", payload, {
-        headers: token ? { Authorization: `Bearer ${token}` } : {},
-      });
+      await api.post("interview", payload);
       toast.success("Submitted for review! ✅", { autoClose: 1500 });
       setForm(EMPTY);
       setStep(0);

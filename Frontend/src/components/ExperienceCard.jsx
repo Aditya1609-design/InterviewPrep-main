@@ -4,7 +4,7 @@ import {
   FaUser,
   FaBuilding,
 } from "react-icons/fa";
-import axios from "axios";
+import api from "../services/api";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -40,13 +40,7 @@ export default function ExperienceCard({ exp, onUpvote }) {
     }
 
     try {
-      const token = await user.getIdToken();
-
-      const res = await axios.patch(
-        `https://interviewprep-backend-5os4.onrender.com/interview/${exp._id}/upvote`,
-        {},
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      const res = await api.patch(`interview/${exp._id}/upvote`, {});
 
       setUpvotes(res.data.upvotes);
       setIsUpvoted(res.data.upvoted);
