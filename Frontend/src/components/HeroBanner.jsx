@@ -1,5 +1,5 @@
 // components/HeroBanner.jsx
-export default function HeroBanner({ title = "Interview Experiences", subtitle = "From NIT KKR to top companies—real interviews, real experiences." }) {
+export default function HeroBanner({ title = "Interview Experiences", subtitle = "Real interviews, Real experiences." }) {
   return (
     <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white py-12 mb-8 overflow-hidden">
       {/* Background Pattern */}

@@ -79,7 +79,7 @@ export default function Interview() {
     <div>
       <HeroBanner
         title="Interview Experiences"
-        subtitle="From NIT KKR to top companies—real interviews, real experiences."
+        subtitle="Real interviews, Real experiences."
       />
 
       <div className="px-4 max-w-6xl mx-auto py-8">
